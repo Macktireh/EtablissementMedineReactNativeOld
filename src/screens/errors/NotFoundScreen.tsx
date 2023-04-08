@@ -2,7 +2,7 @@ import React from "react";
 
 import { Text, Center, VStack } from "native-base";
 
-import { WrapperScreen } from "#widgets/WrapperScreen";
+import { WrapperScreen } from "#components/shared/WrapperScreen";
 
 export const NotFoundScreen: React.FunctionComponent = () => {
   return (

@@ -3,21 +3,20 @@ import React from "react";
 import { Input, Icon, Pressable, Button } from "native-base";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-import colors from "#constant/colors";
+import { colors } from "#config/theme";
 import { useColorScheme } from "#hooks/useColorScheme";
 
 type propsTypes = {
   text: string;
-  variant?: "underlined" | "outlined" | "filled" | "unstyled" | "rounded";
-  // color: typeof colors.dark;
   w?: string;
+  size?: number;
   onPress?: () => void;
 };
 
 export const ButtonCustom: React.FC<propsTypes> = ({
   text,
-  variant,
-  w = "50%",
+  w = "70%",
+  size,
   onPress,
 }): JSX.Element => {
   const colorScheme = useColorScheme();
@@ -26,9 +25,12 @@ export const ButtonCustom: React.FC<propsTypes> = ({
     <Button
       w={w}
       rounded={50}
-      bg={colors[colorScheme].secondary}
-      _pressed={{ bg: colors[colorScheme].secondary }}
+      bg={colors[colorScheme].primary}
+      _pressed={{ bg: colors[colorScheme].primary }}
       onPress={() => onPress && onPress()}
+      pt={4}
+      pb={4}
+      size={size}
     >
       {text}
     </Button>

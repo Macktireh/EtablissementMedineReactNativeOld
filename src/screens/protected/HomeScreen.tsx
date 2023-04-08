@@ -1,36 +1,35 @@
 import React from "react";
 
-import { Box, Text, Center, VStack, ScrollView } from "native-base";
+import { Box, Text, Center, VStack, ScrollView, Image, HStack, Pressable } from "native-base";
 
-import { WrapperScreen } from "#widgets/WrapperScreen";
+import { WrapperScreen } from "#components/shared/WrapperScreen";
 import { useColorScheme } from "#hooks/useColorScheme";
-import colors from "#constant/colors";
+import { colors } from "#config/theme";
+import { CardCategory } from "#components/Home/CardCategory";
 
 export const HomeScreen: React.FunctionComponent = () => {
   const colorScheme = useColorScheme();
   return (
     <WrapperScreen>
-      <ScrollView>
-        <Center backgroundColor={colors[colorScheme].success}>
-          <Text color={colors[colorScheme].text}>
-            Hello world from HomeScreen
-          </Text>
-        </Center>
-        <Box mt="4" bg="primary.500">
-          <VStack space={10} alignItems="center" bg="secondary.300" px="50">
-            <Center w="64" h="20" bg="indigo.300" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.500" rounded="md" shadow={3} />
-            <Center w="64" h="20" bg="indigo.700" rounded="md" shadow={3} />
-          </VStack>
-          ;
-        </Box>
+      <ScrollView w="full">
+        <VStack w="full" bg={colors[colorScheme].background}>
+          <Center
+            bg={colors[colorScheme].background}
+            w="full"
+            p="2"
+            flexWrap="wrap"
+            flexDirection="row"
+          >
+            {[1, 2, 3, 4, 5].map((_, index) => (
+              <CardCategory
+                key={index}
+                index={index}
+                text="Fruits"
+                uri="https://www.pngall.com/wp-content/uploads/2016/03/Fruit.png"
+              />
+            ))}
+          </Center>
+        </VStack>
       </ScrollView>
     </WrapperScreen>
   );

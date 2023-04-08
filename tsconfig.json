@@ -3,17 +3,21 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "#screens/*": ["./src/screens/*"],
-      "#navigations/*": ["./src/navigations/*"],
+      "#app/*": ["./src/app/*"],
       "#components/*": ["./src/components/*"],
-      "#context/*": ["./src/context/*"],
+      "#config/*": ["./src/config/*"],
       "#constant/*": ["./src/constant/*"],
+      "#context/*": ["./src/context/*"],
+      "#features/*": ["./src/features/*"],
       "#hooks/*": ["./src/hooks/*"],
       "#models/*": ["./src/models/*"],
+      "#navigations/*": ["./src/navigations/*"],
+      "#screens/*": ["./src/screens/*"],
       "#services/*": ["./src/services/*"],
-      "#widgets/*": ["./src/widgets/*"],
-      "#app/*": ["./src/app/*"],
-      "#features/*": ["./src/features/*"]
+      "#types/*": ["./src/types/*"],
+      "#utils/*": ["./src/utils/*"],
+      "#widgets/*": ["./src/widgets/*"]
     }
-  }
+  },
+  "typeRoots": ["./src/types"]
 }

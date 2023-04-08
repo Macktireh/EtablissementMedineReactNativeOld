@@ -16,6 +16,11 @@ export default function useCachedResources() {
         await Font.loadAsync({
           ...FontAwesome.font,
           "space-mono": require("../../assets/fonts/SpaceMono-Regular.ttf"),
+          "Roboto-Light": require("../../assets/fonts/Roboto/Roboto-Light.ttf"),
+          "Roboto-Regular": require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
+          "Roboto-Medium": require("../../assets/fonts/Roboto/Roboto-Medium.ttf"),
+          "Roboto-Bold": require("../../assets/fonts/Roboto/Roboto-Bold.ttf"),
+          "Roboto-Black": require("../../assets/fonts/Roboto/Roboto-Black.ttf"),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

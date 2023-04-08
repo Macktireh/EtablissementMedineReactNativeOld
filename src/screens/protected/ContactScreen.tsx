@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Text, Center, VStack, ScrollView } from "native-base";
 
-import { WrapperScreen } from "#widgets/WrapperScreen";
+import { WrapperScreen } from "#components/shared/WrapperScreen";
 
 export const ContactScreen: React.FunctionComponent = () => {
   return (

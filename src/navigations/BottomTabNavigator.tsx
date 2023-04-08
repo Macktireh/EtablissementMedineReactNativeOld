@@ -1,55 +1,53 @@
 import React from "react";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { BottomTabHeaderProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import { HomeScreen } from "#screens/protected/HomeScreen";
+import { SearchScreen } from "#screens/protected/SearchScreen";
 import { CartScreen } from "#screens/protected/CartScreen";
 import { ContactScreen } from "#screens/protected/ContactScreen";
 import { ProfileScreen } from "#screens/protected/ProfileScreen";
-import { RootTabParamList } from "#models/navigation";
+import { protectedScreenName } from "#screens/protected";
+import { RootTabParamList } from "#types/navigationTyping";
 import { useColorScheme } from "#hooks/useColorScheme";
-import colors from "#constant/colors";
-
-// screen names
-const HomeName = "Home";
-const CartName = "Cart";
-const ProfileName = "Profile";
-const ContactName = "Contact";
+import { colors } from "#config/theme";
+import { Header } from "#components/shared/Header";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
-export const BottomTabNavigator = () => {
+export const BottomTabNavigator: React.FC = () => {
   const colorScheme = useColorScheme();
   return (
     <Tab.Navigator
-      initialRouteName={HomeName}
+      initialRouteName={protectedScreenName.Home}
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: colors[colorScheme].primary,
-        tabBarInactiveTintColor: colors[colorScheme].text,
+        tabBarInactiveTintColor: colors[colorScheme].grey[500],
         // headerTransparent: true,
-        // headerTitle: "",
-        // header: () => <></>,
+        headerTitle: "ddddd",
+        header: (props: BottomTabHeaderProps) => <Header nameScreen={props.route.name}></Header>,
         headerStyle: {
           backgroundColor: colors[colorScheme].background,
-          height: 100,
+          height: 60,
         },
         headerTitleStyle: {
           fontWeight: "bold",
           fontSize: 20,
           color: colors[colorScheme].text,
         },
+
         tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "500",
+          fontSize: 11,
         },
         tabBarStyle: [
           {
             display: "flex",
-            paddingBottom: 4,
-            paddingTop: 4,
-            height: 50,
-            backgroundColor: colors[colorScheme].background,
+            paddingBottom: 2,
+            paddingTop: 2,
+            height: 46,
+            backgroundColor: colors[colorScheme].bottomTabBar,
+            borderTopColor: colors[colorScheme].grey[300],
           },
           null,
         ],
@@ -57,26 +55,27 @@ export const BottomTabNavigator = () => {
           let iconName;
           let rn = route.name;
 
-          if (rn === HomeName) {
+          if (rn === protectedScreenName.Home) {
             iconName = focused ? "home" : "home-outline";
-          } else if (rn === CartName) {
+          } else if (rn === protectedScreenName.Search) {
+            iconName = focused ? "search-sharp" : "search-outline";
+          } else if (rn === protectedScreenName.Cart) {
             iconName = focused ? "cart" : "cart-outline";
-          } else if (rn === ProfileName) {
+          } else if (rn === protectedScreenName.Profile) {
             iconName = focused ? "person" : "person-outline";
-          } else if (rn === ContactName) {
-            iconName = focused ? "help-circle" : "help-circle-outline";
+          } else if (rn === protectedScreenName.Contact) {
+            iconName = focused ? "settings-sharp" : "settings-outline";
           }
 
-          return (
-            <Ionicons name={iconName as string} size={size} color={color} />
-          );
+          return <Ionicons name={iconName as string} size={size} color={color} />;
         },
       })}
     >
-      <Tab.Screen name={HomeName} component={HomeScreen} />
-      <Tab.Screen name={CartName} component={CartScreen} />
-      <Tab.Screen name={ProfileName} component={ProfileScreen} />
-      <Tab.Screen name={ContactName} component={ContactScreen} />
+      <Tab.Screen name={protectedScreenName.Home} component={HomeScreen} />
+      <Tab.Screen name={protectedScreenName.Search} component={SearchScreen} />
+      <Tab.Screen name={protectedScreenName.Cart} component={CartScreen} />
+      <Tab.Screen name={protectedScreenName.Profile} component={ProfileScreen} />
+      <Tab.Screen name={protectedScreenName.Contact} component={ContactScreen} />
     </Tab.Navigator>
   );
 };

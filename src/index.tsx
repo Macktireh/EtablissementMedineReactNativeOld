@@ -1,11 +1,13 @@
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, StatusBar } from "native-base";
 
 import { Navigator } from "#navigations/Navigator";
+import { extendThemeFonts } from "#config/theme";
 
 export const MainApp: React.FC = () => {
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={extendThemeFonts}>
       <Navigator />
+      <StatusBar />
     </NativeBaseProvider>
   );
 };

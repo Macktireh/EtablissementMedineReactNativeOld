@@ -1,3 +1,4 @@
+import { useAppSelector } from "#hooks/useDispatchAndSelector";
 import React, { PropsWithChildren } from "react";
 
 type PropsType = PropsWithChildren<{
@@ -5,5 +6,7 @@ type PropsType = PropsWithChildren<{
 }>;
 
 export const AuthGuard: React.FC<PropsType> = ({ children }) => {
+  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
+
   return <>{children}</>;
 };
